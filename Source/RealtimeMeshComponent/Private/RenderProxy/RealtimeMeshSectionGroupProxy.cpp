@@ -339,7 +339,7 @@ namespace RealtimeMesh
 #else
 				RayTracingGeometry.InitResource();				
 #endif
-				check(RayTracingGeometry.RayTracingGeometryRHI.IsValid());
+				check(RayTracingGeometry.GetRHI() != nullptr);
 			}
 		}
 #endif

@@ -768,11 +768,11 @@ namespace RealtimeMesh
 				if (const auto ThisShared = ThisWeak.Pin())
 				{
 					FRealtimeMeshAccessContext AccessContext(ThisShared.ToSharedRef());
-					FRealtimeMeshComplexGeometry ComplexGeometry;
+					FRealtimeMeshComplexGeometry TempComplexGeometry;
 					
-					if (ThisShared->GenerateComplexCollision(AccessContext, ComplexGeometry))
+					if (ThisShared->GenerateComplexCollision(AccessContext, TempComplexGeometry))
 					{
-						CollisionData->ComplexGeometry = MoveTemp(ComplexGeometry);
+						CollisionData->ComplexGeometry = MoveTemp(TempComplexGeometry);
 					}
 
 					auto CollisionUpdateFuture = ThisShared->UpdateCollision(MoveTemp(*CollisionData), UpdateKey);
