@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015-2024 TriAxis Games, L.L.C. All Rights Reserved.
+// Copyright (c) 2015-2024 TriAxis Games, L.L.C. All Rights Reserved.
 
 #include "Data/RealtimeMeshUpdateBuilder.h"
 #include "RealtimeMeshComponentModule.h"
@@ -73,9 +73,9 @@ namespace RealtimeMesh
 				RHICmdList->FinishRecording();
 
 				ENQUEUE_RENDER_COMMAND(RealtimeMeshAsyncSubmission)(
-					[this, RHIAsyncCmdList = RHICmdList.Release()](FRHICommandListImmediate& RHICmdList)
+					[this, RHIAsyncCmdList = RHICmdList.Release()](FRHICommandListImmediate& RefRHICmdList)
 					{
-						RHICmdList.QueueAsyncCommandListSubmit(RHIAsyncCmdList);
+						RefRHICmdList.QueueAsyncCommandListSubmit(RHIAsyncCmdList);
 					});
 #else
 				RHICmdList.Reset();				
